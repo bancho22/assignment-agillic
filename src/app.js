@@ -1,5 +1,7 @@
 import React from 'react'
+import _ from 'lodash'
 import logo from './logo.svg'
+import {name, genres, rating, summary} from './mock.json'
 
 import SearchBar from './searchBar/searchBar.component'
 import ShowOverview from './showOverview/showOverview.component'
@@ -12,7 +14,7 @@ const App = () => (
       <SearchBar />
     </header>
     <content className='app-content'>
-      <ShowOverview />
+      <ShowOverview title={name} genres={_.join(genres, ', ')} rating={rating.average} summary={summary} />
       <EpisodeList />
     </content>
   </div>

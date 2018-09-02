@@ -1,8 +1,16 @@
 import React from 'react'
 
-const SearchBar = () => {
-  return (
-    <div>search bar</div>
+class SearchBar extends React.Component {
+  state = {
+    searchText: ''
+  }
+
+  updateSearchText = ({text: searchText}) => this.setState({searchText})
+
+  render = () => (
+    <div className='search-bar'>
+      <input type='text' value={this.state.searchText} onChange={this.updateSearchText} />
+    </div>
   )
 }
 
