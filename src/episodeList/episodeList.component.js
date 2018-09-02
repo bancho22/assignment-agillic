@@ -1,11 +1,17 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import _ from 'lodash'
 
-const EpisodeList = () => {
-  return (
-    <div>episode list</div>
-  )
+const EpisodeList = ({episodes}) => (
+  <div className='show-overview'>
+    {_.map(episodes, ({id, name}) => (
+      <li key={id}>{name}</li>
+    ))}
+  </div>
+)
+
+EpisodeList.propTypes = {
+  episodes: PropTypes.array.isRequired
 }
-
-EpisodeList.propTypes = {}
 
 export default EpisodeList
