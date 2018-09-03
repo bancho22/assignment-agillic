@@ -32,6 +32,9 @@ export const itemFetchData = name => dispatch => {
       return response
     })
     .then(response => response.json())
-    .then(item => dispatch(itemFetchDataSuccess(item)))
+    .then(item => {
+      console.log('item', item)
+      dispatch(itemFetchDataSuccess(item))
+    })
     .catch(() => dispatch(itemHasErrored(true)))
 }
