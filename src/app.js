@@ -6,12 +6,12 @@ import SearchBar from './searchBar/searchBar.component'
 import ShowOverview from './showOverview/showOverview.component'
 import EpisodeList from './episodeList/episodeList.component'
 
-import {name, genres, rating, summary, _embedded} from './store/mock.json'
+import {name, genres, rating, summary, image, _embedded} from './store/mock.json'
 import logo from './logo.svg'
 
 const {episodes} = _embedded
 const initState = {
-  item: {name, genres, rating, summary, episodes},
+  item: {name, genres, rating, summary, image, episodes},
   searchText: ''
 }
 

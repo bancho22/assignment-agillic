@@ -18,7 +18,8 @@
         "start": "react-scripts-with-stylus start src/app.styl",
         "build": "react-scripts-with-stylus build src/app.styl",
         "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "deploy": "npm run build && aws s3 sync build/ s3://agillic-1"
     },
     "devDependencies": {
         "babel-eslint": "^8.2.3",
