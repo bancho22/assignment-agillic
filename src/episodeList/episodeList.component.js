@@ -1,6 +1,7 @@
+import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
+import {connect} from 'react-redux'
 
 const EpisodeList = ({episodes}) => (
   <div className='show-overview'>
@@ -10,8 +11,12 @@ const EpisodeList = ({episodes}) => (
   </div>
 )
 
+const mapStateToProps = ({item}) => ({
+  episodes: _.get(item, '_embedded.episodes')
+})
+
 EpisodeList.propTypes = {
-  episodes: PropTypes.array.isRequired
+  episodes: PropTypes.array
 }
 
-export default EpisodeList
+export default connect(mapStateToProps)(EpisodeList)
