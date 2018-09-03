@@ -11,7 +11,7 @@ import logo from './logo.svg'
 
 const {episodes} = _embedded
 const initState = {
-  item: {title: name, genres, rating, summary, episodes},
+  item: {name, genres, rating, summary, episodes},
   searchText: ''
 }
 
