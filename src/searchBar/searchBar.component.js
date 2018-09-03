@@ -11,8 +11,10 @@ const SearchBar = ({fetchData, setSearchText, searchText}) => {
   }
 
   return (
-    <div className='search-bar'>
-      <input type='text' value={searchText} onChange={event => lookForShow(event.target)} />
+    <div className='mdl-textfield mdl-js-textfield'>
+      <input className='mdl-textfield__input' id='search-bar-field' type='text' value={searchText} onChange={event => lookForShow(event.target)} />
+      <label className='mdl-textfield__label' htmlFor='search-bar-field'>Rick and Morty</label>
+      <div className='mdc-line-ripple' />
     </div>
   )
 }
