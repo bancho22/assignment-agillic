@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
 
 const ShowOverview = ({title, genres, rating, summary}) => (
   <div className='show-overview'>
@@ -10,6 +11,12 @@ const ShowOverview = ({title, genres, rating, summary}) => (
   </div>
 )
 
+const mapStateToProps = ({searchText}) => ({
+  title: searchText
+})
+
+const mapDispatchToProps = () => {}
+
 ShowOverview.propTypes = {
   title: PropTypes.string.isRequired,
   genres: PropTypes.string.isRequired,
@@ -17,4 +24,4 @@ ShowOverview.propTypes = {
   summary: PropTypes.string.isRequired
 }
 
-export default ShowOverview
+export default connect(mapStateToProps, mapDispatchToProps)(ShowOverview)
