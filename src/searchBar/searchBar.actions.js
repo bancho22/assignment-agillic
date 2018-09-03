@@ -1,3 +1,5 @@
+import makeDebounce from 'redux-debounce-thunk'
+
 export const itemHasErrored = bool => ({
   type: 'ITEM_HAS_ERRORED',
   hasErrored: bool
@@ -18,12 +20,10 @@ export const itemFetchDataSuccess = item => ({
   item
 })
 
-export const itemFetchData = name => dispatch => {
+const itemFetchData = name => dispatch => {
   dispatch(itemIsLoading(true))
-  dispatch(searchTextChanged(name))
-
-  // fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}&embed=episodes`)
-  fetch('guza mi')
+  console.log(name)
+  fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}&embed=episodes`)
     .then(response => {
       if (!response.ok) {
         throw Error(response.statusText)
@@ -38,3 +38,5 @@ export const itemFetchData = name => dispatch => {
     })
     .catch(() => dispatch(itemHasErrored(true)))
 }
+
+export const itemFetchDataDebounced = makeDebounce(itemFetchData, 500)

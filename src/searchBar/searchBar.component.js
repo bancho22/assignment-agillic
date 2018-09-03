@@ -2,10 +2,13 @@ import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {itemFetchData} from './searchBar.actions'
+import {itemFetchDataDebounced, searchTextChanged} from './searchBar.actions'
 
-const SearchBar = ({fetchData, searchText}) => {
-  const lookForShow = ({value}) => fetchData(_.isString(value) ? value : '')
+const SearchBar = ({fetchData, setSearchText, searchText}) => {
+  const lookForShow = ({value}) => {
+    setSearchText(value)
+    fetchData(_.isString(value) ? value : '')
+  }
 
   return (
     <div className='search-bar'>
@@ -19,11 +22,13 @@ const mapStateToProps = ({searchText}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(itemFetchData(url))
+  fetchData: url => dispatch(itemFetchDataDebounced(url)),
+  setSearchText: text => dispatch(searchTextChanged(text))
 })
 
 SearchBar.propTypes = {
   fetchData: PropTypes.func.isRequired,
+  setSearchText: PropTypes.func.isRequired,
   searchText: PropTypes.string.isRequired
 }
 
