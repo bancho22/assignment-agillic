@@ -22,8 +22,8 @@ export const itemFetchDataSuccess = item => ({
 
 const itemFetchData = name => dispatch => {
   dispatch(itemIsLoading(true))
-  console.log(name)
-  fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name}&embed=episodes`)
+  console.log(typeof name)
+  fetch(`http://api.tvmaze.com/singlesearch/shows?q=${name.trim().replace(/\s+/g, '-').toLowerCase()}&embed=episodes`)
     .then(response => {
       if (!response.ok) {
         throw Error(response.statusText)
