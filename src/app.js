@@ -32,6 +32,4 @@ const App = () => (
   </Provider>
 )
 
-App.propTypes = {}
-
 export default App

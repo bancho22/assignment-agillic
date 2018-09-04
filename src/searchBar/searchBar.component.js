@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -9,14 +8,14 @@ import {itemFetchDataDebounced, searchTextChanged} from './searchBar.actions'
 const SearchBar = ({fetchData, setSearchText, searchText}) => {
   const lookForShow = ({value}) => {
     setSearchText(value)
-    fetchData(_.isString(value) ? value : '')
+    fetchData(value)
   }
 
   return (
     <div className='search-bar'>
       <FontAwesomeIcon className='search-icon' icon={faSearch} />
       <div className='mdl-textfield mdl-js-textfield'>
-        <input className='mdl-textfield__input search-bar-input' id='search-bar-field' type='text' value={searchText} onChange={event => lookForShow(event.target)} />
+        <input className='mdl-textfield__input search-bar-input' id='search-bar-field' type='text' value={searchText} onChange={({target}) => lookForShow(target)} />
         <label className='mdl-textfield__label search-bar-input' htmlFor='search-bar-field'>Rick and Morty</label>
         <div className='mdc-line-ripple' />
       </div>

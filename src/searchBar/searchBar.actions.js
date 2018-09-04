@@ -39,4 +39,5 @@ const itemFetchData = name => dispatch => {
     .catch(() => dispatch(itemHasErrored(true)))
 }
 
-export const itemFetchDataDebounced = makeDebounce(itemFetchData, 500)
+const debounceMs = 500
+export const itemFetchDataDebounced = makeDebounce(itemFetchData, debounceMs)

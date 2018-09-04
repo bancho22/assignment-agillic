@@ -26,7 +26,7 @@ const mapStateToProps = ({item}) => ({
 
 ShowOverview.propTypes = {
   title: PropTypes.string.isRequired,
-  genres: PropTypes.array,
+  genres: PropTypes.arrayOf(PropTypes.string),
   rating: PropTypes.number,
   summary: PropTypes.string,
   imageUrl: PropTypes.string
