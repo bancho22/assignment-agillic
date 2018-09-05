@@ -5,13 +5,17 @@ import ReactHtmlParser from 'react-html-parser'
 
 const ShowOverview = ({title, genres, rating, summary, imageUrl}) => (
   <div className='show-overview'>
-    <strong><h1>{title}</h1></strong>
-    <h2>Genres: {(genres && genres.length > 0) ? genres.join(', ') : 'N/A'}</h2>
-    <h3>Rating: {rating || 'N/A'}</h3>
-    <div>
-      Summary: {(summary && summary.length > 0) ? ReactHtmlParser(summary) : 'N/A'}
-    </div>
     {imageUrl ? (<img src={imageUrl} alt='show-poster' />) : (<p>No poster available</p>)}
+    <strong><h1 className='show-title'>{title}</h1></strong>
+    <div className='show-genres'>
+      <span className='bold'>Genres:&nbsp;</span><span>{(genres && genres.length > 0) ? genres.join(', ') : 'N/A'}</span>
+    </div>
+    <div className='show-rating'>
+      <span className='bold'>Rating:&nbsp;</span><span>{rating || 'N/A'}</span>
+    </div>
+    <div className='show-summary'>
+      <span className='bold'>Summary:&nbsp;</span><p className='summary-text'>{(summary && summary.length > 0) ? ReactHtmlParser(summary) : 'N/A'}</p>
+    </div>
   </div>
 )
 
