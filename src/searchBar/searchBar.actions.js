@@ -29,11 +29,13 @@ const showFetchData = showName => dispatch => {
       if (!response.ok) {
         throw Error(response.statusText)
       }
-      dispatch(showIsLoading(false))
       return response
     })
     .then(response => response.json())
-    .then(show => dispatch(showFetchDataSuccess(show)))
+    .then(show => {
+      dispatch(showFetchDataSuccess(show))
+      setTimeout(() => dispatch(showIsLoading(false)), 1000) // in order to see the spinnner instead of a screen flash
+    })
     .catch(() => dispatch(showHasErrored(true)))
 }
 
