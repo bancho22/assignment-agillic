@@ -1,4 +1,3 @@
-import _ from 'lodash'
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
@@ -9,7 +8,7 @@ const generateName = ({season, number, name}) => `S${formatNumber(season)}E${for
 
 const EpisodeList = ({episodes}) => (
   <div className='show-overview'>
-    {_.map(episodes, ({id, url, name, season, number, image}) => (
+    {episodes.map(({id, url, name, season, number, image}) => (
       <li key={id}>
         {image && image.medium && <img src={image.medium} alt='episode-poster' />}
         {generateName({season, number, name})}
@@ -18,8 +17,8 @@ const EpisodeList = ({episodes}) => (
   </div>
 )
 
-const mapStateToProps = ({item}) => ({
-  episodes: _.get(item, '_embedded.episodes')
+const mapStateToProps = ({show}) => ({
+  episodes: show && show._embedded && show._embedded.episodes
 })
 
 EpisodeList.propTypes = {

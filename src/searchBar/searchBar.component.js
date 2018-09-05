@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import {itemFetchDataDebounced, searchTextChanged} from './searchBar.actions'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+import {showFetchDataDebounced, searchTextChanged} from './searchBar.actions'
 
 const SearchBar = ({fetchData, setSearchText, searchText}) => {
   const lookForShow = ({value}) => {
@@ -28,7 +28,7 @@ const mapStateToProps = ({searchText}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchData: url => dispatch(itemFetchDataDebounced(url)),
+  fetchData: url => dispatch(showFetchDataDebounced(url)),
   setSearchText: text => dispatch(searchTextChanged(text))
 })
 

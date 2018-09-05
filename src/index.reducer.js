@@ -1,17 +1,17 @@
 import {combineReducers} from 'redux'
 
-const itemHasErrored = (state = false, action) => {
+const showHasErrored = (state = false, action) => {
   switch (action.type) {
-    case 'ITEM_HAS_ERRORED':
+    case 'SHOW_HAS_ERRORED':
       return action.hasErrored
     default:
       return state
   }
 }
 
-const itemIsLoading = (state = false, action) => {
+const showIsLoading = (state = false, action) => {
   switch (action.type) {
-    case 'ITEM_IS_LOADING':
+    case 'SHOW_IS_LOADING':
       return action.isLoading
     default:
       return state
@@ -27,9 +27,9 @@ const searchText = (state = '', action) => {
   }
 }
 
-const item = (state = {}, action) => {
+const show = (state = {}, action) => {
   switch (action.type) {
-    case 'ITEM_FETCH_DATA_SUCCESS':
+    case 'SHOW_FETCH_DATA_SUCCESS':
       return action.item
     default:
       return state
@@ -37,8 +37,8 @@ const item = (state = {}, action) => {
 }
 
 export default combineReducers({
-  itemHasErrored,
-  itemIsLoading,
+  showHasErrored,
+  showIsLoading,
   searchText,
-  item
+  show
 })
